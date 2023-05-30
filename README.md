@@ -1,6 +1,6 @@
-# Decision Tree Visualization
+# Isolation Forest Visualization
 
-A web decision tree visualization based on vuetify.
+A web [isolation forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html) visualization based on Vite + Vue + Vuetify.
 
 ## Project setup
 ```
