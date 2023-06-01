@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { calcDepths } from './iforest/thiforest'
+import { calcDepthsHarmony } from './iforest/thiforest'
 import ForestView from './components/ForestView.vue';
 import ConfigDrawer from './components/ConfigDrawer.vue';
 
@@ -9,7 +9,7 @@ const data = ref([])
 
 function handleChangeLines(newVal) {
   // Calc depths
-  calcDepths(newVal).then((depths) => {
+  calcDepthsHarmony(newVal).then((depths) => {
     // update points
     let sum = 0
     const points = [

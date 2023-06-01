@@ -25,8 +25,8 @@ function generateMatrix(P, i) {
   return matrix;
 }
 
-function calcDepths(P) {
-  return new Promise((resolve, reject) => {
+function calcDepthsMatrix(P) {
+  return new Promise((resolve) => {
     const N = P.length;
     const depths = [];
 
@@ -59,4 +59,34 @@ function calcDepths(P) {
   });
 }
 
-export { calcDepths };
+function calcDepthsHarmony(P) {
+  return new Promise((resolve) => {
+    const n = P.length;
+    const S = Array(n)
+      .fill(0)
+      .map((_, i) => (
+        Array(n)
+          .fill(0)
+          .map((_, j) => (
+            P.slice(i, j + 1).reduce((a, b) => a + b, 0)
+          ))
+      ))
+
+    const depths = Array(n + 1)
+      .fill(0)
+      .map((_, i) => (
+        Array(i)
+          .fill(0)
+          .map((_, j) => P[j] / S[j][i - 1])
+          .reduce((a, b) => a + b, 0) +
+        Array(n - i)
+          .fill(0)
+          .map((_, j) => P[n - j - 1] / S[i][n - j - 1])
+          .reduce((a, b) => a + b, 0)
+      ))
+    
+      resolve(depths);
+  })
+}
+
+export { calcDepthsMatrix, calcDepthsHarmony };
