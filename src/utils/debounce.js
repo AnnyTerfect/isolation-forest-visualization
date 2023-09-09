@@ -2,16 +2,16 @@
 
 export default function useDebounce() {
   const debounce = (fn, delay) => {
-    let timer = null;
+    let timer = null
     return function () {
-      const context = this;
-      const args = arguments;
-      clearTimeout(timer);
-      timer = setTimeout(function () {
-        fn.apply(context, args);
-      }, delay);
-    };
-  };
+      const context = this
+      const args = arguments
+      clearTimeout(timer)
+      timer = setTimeout(() => {
+        fn.apply(context, args)
+      }, delay)
+    }
+  }
 
-  return debounce;
+  return debounce
 }
