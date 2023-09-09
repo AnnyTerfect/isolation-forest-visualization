@@ -1,10 +1,14 @@
 <script setup>
-import { ref } from 'vue'
-import { calcDepthsHarmony } from './iforest/thiforest'
-import ForestView from './components/ForestView.vue'
-import ConfigDrawer from './components/ConfigDrawer.vue'
+import { computed, ref } from 'vue'
+import store from '../store'
+import { calcDepthsHarmony } from '../iforest/thiforest'
+import ForestView from '../components/ForestView.vue'
+import ConfigDrawer from '../components/ConfigDrawer.vue'
 
-const drawer = ref(true)
+const drawer = computed({
+  get: () => store.getters['drawer/getDrawer'],
+  set: val => store.commit('drawer/setDrawer', val),
+})
 const data = ref([])
 
 function handleChangeLines(newVal) {
@@ -27,27 +31,11 @@ function handleChangeLines(newVal) {
 </script>
 
 <template>
-  <v-app>
-    <v-app-bar app dark clipped-left color="primary">
-      <v-toolbar-title>
-        <v-btn icon dark @click.stop="drawer = !drawer">
-          <v-icon>mdi-menu</v-icon>
-        </v-btn>
-        <v-icon>mdi-tree</v-icon>
-        <span class="ml-2">IForest</span>
-      </v-toolbar-title>
-
-      <v-spacer />
-
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-    </v-app-bar>
-
+  <div>
     <ConfigDrawer v-model:drawer="drawer" @change="handleChangeLines" />
 
     <v-main class="fixed left-0 right-0 top-0 bottom-0">
       <ForestView :data="data" :r="10" />
     </v-main>
-  </v-app>
+  </div>
 </template>
