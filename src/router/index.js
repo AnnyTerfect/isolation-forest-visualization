@@ -1,4 +1,8 @@
-import { createMemoryHistory, createRouter, createWebHistory } from 'vue-router'
+import {
+  createMemoryHistory,
+  createRouter,
+  createWebHistory,
+} from 'vue-router'
 
 const routes = [
   {
@@ -7,7 +11,7 @@ const routes = [
   },
   {
     path: '/2d',
-    component: () => import('../views/TwoDimension.vue'),
+    component: () => import('../views/TwoDimensions.vue'),
   },
 ]
 
