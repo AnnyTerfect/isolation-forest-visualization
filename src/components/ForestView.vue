@@ -46,11 +46,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="p-3 h-1/1">
-    <v-card class="w-1/1 h-1/1">
-      <div ref="container" class="w-1/1 h-1/1">
+  <div class="p-3 h-full">
+    <v-card class="w-full h-full">
+      <div ref="container" class="w-full h-full">
         <svg
-          class="w-full h-1/1" :viewBox="container ? `${-r} ${-r} ${width + 2 * r} ${height + 2 * r}` : null" @mouseup="handleMouseUp" @mousemove="handleMouseMove"
+          class="w-full h-full" :viewBox="container ? `${-r} ${-r} ${width + 2 * r} ${height + 2 * r}` : null" @mouseup="handleMouseUp" @mousemove="handleMouseMove"
           @mousedown="handleMouseDown"
         >
           <g v-for="(d, i) in processedData" :key="i">

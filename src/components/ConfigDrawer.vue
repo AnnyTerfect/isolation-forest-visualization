@@ -79,8 +79,10 @@ onMounted(() => {
       </v-card-title>
 
       <v-card-text class="fill-height overflow-y-scroll">
-        <div v-for="(_, index) in lines" :key="index" class="flex flex-row items-center my-6">
-          <v-checkbox v-model="checks[index]" class="w-20" density="compact" hide-details />
+        <div v-for="(_, index) in lines" :key="index" class="flex items-center my-6">
+          <div>
+            <v-checkbox v-model="checks[index]" density="compact" hide-details />
+          </div>
           <v-btn
             icon flat density="compact"
             @click="() => (lines[index] -= step) && handleValueChange(index)"
@@ -97,7 +99,8 @@ onMounted(() => {
           >
             <v-icon>mdi-plus</v-icon>
           </v-btn>
-          <v-btn icon flat class="ml-3" @click="() => deleteLine(index)">
+
+          <v-btn icon flat @click="() => deleteLine(index)">
             <v-icon>mdi-delete</v-icon>
           </v-btn>
         </div>
